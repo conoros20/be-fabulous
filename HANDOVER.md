@@ -14,10 +14,10 @@ _Last updated: 2026-10-15_
 - `favicon.svg`: black tile + gold dress.
 - Site: 6 static pages (`index`, `collection`, `product`, `account`, `cart`, `style-finder`) + `catalog.js`; each page embeds its own inline `<style>` (identical shared classes + `:root` — keep in sync).
 - **Repo:** git initialized locally on branch `main`; identity `Conor <conor@localhost>`. No remote yet — pushes pending `gh auth login` / a remote URL. `backups/` is git-ignored (superseded by git history).
-- **Mail notifications:** project plugin `.opencode/plugin/mail-notify.js` emails `conorseanosullivan@gmail.com` after every completed turn in this project (last assistant text + project path + timestamp + files changed). Sends via `~/.config/opencode/mail/send.py` using Gmail SMTP creds in `~/.config/opencode/mail/.env` (user-maintained App Password, chmod 600).
+- **Desktop notifications:** global opencode plugin `~/.config/opencode/plugin/notify-complete.js` shows a **top-right toast** (via `notify-send`) whenever a prompt finishes — in every project. Title `opencode · done`; body = project name + a short snippet of the reply. Skips sub-agent sessions; dedupes idle events.
 
 ## Completed
-- [2026-10-15] Added email-notification automation: `.opencode/plugin/mail-notify.js` (fires on `session.idle`, skips sub-agent sessions) + `~/.config/opencode/mail/send.py` SMTP helper.
+- [2026-10-15] Replaced the abandoned email-notify idea with a **desktop notification**: global plugin `~/.config/opencode/plugin/notify-complete.js` pops a top-right toast on prompt completion.
 - [2026-10-15] Initialized local git repo (`main`), initial commit `afc836e`; `backups/` ignored.
 - [2026-10-15] Applied black & gold dark theme to all 6 pages (verified headless: correct palette, zero JS/console errors).
 - [2026-10-15] Fixed search-bar typed-text colour (was browser-default black → invisible on the black bar; now gold `var(--clay)`).
@@ -31,7 +31,7 @@ _Last updated: 2026-10-15_
 - [2026-10-14] Renamed site "Maison Élan" → "Be Fabulous".
 
 ## TODO
-- [ ] Mail automation activation: paste the Gmail **App Password** into `~/.config/opencode/mail/.env` (`MAIL_PASS=...`), then **restart opencode** so the plugin loads. Test-send with `python3 ~/.config/opencode/mail/send.py --subject test --body-file <(echo hi)`, then a real turn.
+- [ ] **Restart opencode** to load the desktop-notification plugin (`notify-complete.js`).
 - [ ] Connect a git remote when ready (`gh auth login` or a remote URL), then push `main`.
 
 ## Key decisions / gotchas
@@ -39,7 +39,7 @@ _Last updated: 2026-10-15_
 - Each page's CSS is duplicated inline; **keep `:root` and the shared classes in sync across all 6 pages**.
 - `catalog.js` product swatch colours are terracotta-based and independent of the site theme.
 - History: git (branch `main`) plus `backups/` theme snapshots; no remote yet.
-- Mail plugin runs inside opencode's Bun runtime and uses the plugin's `$` shell; a send failure is caught and logged, never disrupts a session.
+- Notification plugin runs inside opencode's Bun runtime and shells out to `/usr/bin/notify-send`; failures are caught and logged, never disrupt a session. Omarchy pins toasts **top-right** (see `/usr/share/omarchy/shell/plugins/notifications/Service.qml`).
 - Verify without eyes: headless Chrome computed-style checks + `google-chrome-stable --headless=new --dump-dom` (see AGENTS.md Notes).
 
 ## Theme history
