@@ -14,8 +14,10 @@ _Last updated: 2026-10-15_
 - `favicon.svg`: black tile + gold dress.
 - Site: 6 static pages (`index`, `collection`, `product`, `account`, `cart`, `style-finder`) + `catalog.js`; each page embeds its own inline `<style>` (identical shared classes + `:root` — keep in sync).
 - **Repo:** git initialized locally on branch `main`; identity `Conor <conor@localhost>`. No remote yet — pushes pending `gh auth login` / a remote URL. `backups/` is git-ignored (superseded by git history).
+- **Mail notifications:** project plugin `.opencode/plugin/mail-notify.js` emails `conorseanosullivan@gmail.com` after every completed turn in this project (last assistant text + project path + timestamp + files changed). Sends via `~/.config/opencode/mail/send.py` using Gmail SMTP creds in `~/.config/opencode/mail/.env` (user-maintained App Password, chmod 600).
 
 ## Completed
+- [2026-10-15] Added email-notification automation: `.opencode/plugin/mail-notify.js` (fires on `session.idle`, skips sub-agent sessions) + `~/.config/opencode/mail/send.py` SMTP helper.
 - [2026-10-15] Initialized local git repo (`main`), initial commit `afc836e`; `backups/` ignored.
 - [2026-10-15] Applied black & gold dark theme to all 6 pages (verified headless: correct palette, zero JS/console errors).
 - [2026-10-15] Fixed search-bar typed-text colour (was browser-default black → invisible on the black bar; now gold `var(--clay)`).
@@ -29,13 +31,15 @@ _Last updated: 2026-10-15_
 - [2026-10-14] Renamed site "Maison Élan" → "Be Fabulous".
 
 ## TODO
-- (nothing pending — awaiting direction)
+- [ ] Mail automation activation: paste the Gmail **App Password** into `~/.config/opencode/mail/.env` (`MAIL_PASS=...`), then **restart opencode** so the plugin loads. Test-send with `python3 ~/.config/opencode/mail/send.py --subject test --body-file <(echo hi)`, then a real turn.
+- [ ] Connect a git remote when ready (`gh auth login` or a remote URL), then push `main`.
 
 ## Key decisions / gotchas
 - Theme vars are overloaded: `--charcoal` = dark surfaces (and previously body text); `--sand`/`--white` = both surface bg and text-on-dark. A pure `:root` swap is insufficient — targeted rule edits are required (documented in each snapshot's `palette.css`).
 - Each page's CSS is duplicated inline; **keep `:root` and the shared classes in sync across all 6 pages**.
 - `catalog.js` product swatch colours are terracotta-based and independent of the site theme.
-- No git repo; history is captured via `backups/` snapshots and this file.
+- History: git (branch `main`) plus `backups/` theme snapshots; no remote yet.
+- Mail plugin runs inside opencode's Bun runtime and uses the plugin's `$` shell; a send failure is caught and logged, never disrupts a session.
 - Verify without eyes: headless Chrome computed-style checks + `google-chrome-stable --headless=new --dump-dom` (see AGENTS.md Notes).
 
 ## Theme history
