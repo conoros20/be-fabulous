@@ -13,8 +13,10 @@ _Last updated: 2026-10-15_
 - Preview server: `python3 -m http.server 8000` from this dir → http://localhost:8000
 - `favicon.svg`: black tile + gold dress.
 - Site: 6 static pages (`index`, `collection`, `product`, `account`, `cart`, `style-finder`) + `catalog.js`; each page embeds its own inline `<style>` (identical shared classes + `:root` — keep in sync).
+- **Repo:** git initialized locally on branch `main`; identity `Conor <conor@localhost>`. No remote yet — pushes pending `gh auth login` / a remote URL. `backups/` is git-ignored (superseded by git history).
 
 ## Completed
+- [2026-10-15] Initialized local git repo (`main`), initial commit `afc836e`; `backups/` ignored.
 - [2026-10-15] Applied black & gold dark theme to all 6 pages (verified headless: correct palette, zero JS/console errors).
 - [2026-10-15] Fixed search-bar typed-text colour (was browser-default black → invisible on the black bar; now gold `var(--clay)`).
 - [2026-10-15] Recoloured `favicon.svg` to black tile + gold dress.
