@@ -187,7 +187,7 @@
   .total-row{display:flex;justify-content:space-between;font-family:var(--serif);font-size:1.4rem;font-weight:600;margin-bottom:1rem}
   .drawer-foot .btn{width:100%}
 
-  .modal{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:1.2rem}
+  .modal{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:1.2rem;background:rgba(8,6,5,.6);backdrop-filter:blur(3px)}
   .modal.open{display:flex}
   .modal-card{background:var(--cream);border-radius:16px;max-width:1000px;width:100%;max-height:92vh;overflow:auto;position:relative;box-shadow:var(--shadow)}
   .modal-close{position:absolute;top:1rem;right:1rem;z-index:5;width:40px;height:40px;border-radius:50%;background:rgba(255,253,250,.95);display:grid;place-items:center;font-size:1.5rem;color:var(--clay)}
@@ -225,6 +225,28 @@
 
   .toast{position:fixed;bottom:1.5rem;left:50%;transform:translate(-50%,140%);background:var(--charcoal);color:#fff;padding:.85rem 1.5rem;border-radius:999px;font-size:.82rem;letter-spacing:.04em;z-index:120;transition:transform .35s;box-shadow:var(--shadow)}
   .toast.show{transform:translate(-50%,0)}
+
+  /* contact the owners */
+  .fab{position:fixed;right:1.4rem;bottom:1.4rem;z-index:90;display:inline-flex;align-items:center;gap:.55rem;padding:.85rem 1.35rem;border-radius:999px;background:var(--clay);color:var(--cream);font-size:.76rem;letter-spacing:.13em;text-transform:uppercase;font-weight:500;box-shadow:var(--shadow);transition:.25s}
+  .fab:hover{background:var(--wine);transform:translateY(-2px)}
+  .fab svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.7}
+  .contact-card{max-width:560px;background:var(--sand);border:1px solid var(--line)}
+  .contact-body{padding:2.6rem 2.2rem 2.2rem}
+  .contact-body h2{font-size:1.9rem;margin:.4rem 0 .6rem}
+  .contact-body>p{color:var(--muted);font-size:.92rem}
+  .cform{display:flex;flex-direction:column;gap:1rem;margin-top:1.5rem}
+  .crow{display:flex;flex-direction:column;gap:.4rem}
+  .crow label{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--clay)}
+  .cform input,.cform textarea{width:100%;padding:.9rem 1.1rem;border:1px solid var(--line);border-radius:10px;background:var(--cream);color:var(--clay);font-family:inherit;font-size:.95rem;transition:.2s}
+  .cform input::placeholder,.cform textarea::placeholder{color:var(--muted)}
+  .cform input:focus,.cform textarea:focus{outline:none;border-color:var(--clay);background:var(--blush)}
+  .cform textarea{min-height:110px;resize:vertical}
+  .cform .btn{align-self:flex-start}
+  .cform .cnote{font-size:.78rem;color:var(--muted);margin-top:-.4rem}
+  @media(max-width:560px){
+    .fab{right:1rem;bottom:1rem;padding:.78rem 1.1rem;font-size:.72rem}
+    .toast{bottom:5.5rem}
+  }
 
   .reveal{opacity:0;transform:translateY(24px);transition:.7s cubic-bezier(.2,.7,.3,1)}
   .reveal.in{opacity:1;transform:none}
@@ -314,6 +336,53 @@
   .bag-empty{text-align:center;color:var(--muted);padding:3.4rem 1.5rem;background:var(--white);border:1px dashed var(--line);border-radius:var(--radius)}
   .bag-empty p{margin-bottom:1.4rem;font-size:1rem}
 
+  /* checkout modal */
+  .checkout-card{max-width:720px}
+  .co-head{padding:2rem 2.2rem 0}
+  .co-steps{display:flex;gap:.5rem;margin-top:1.2rem}
+  .co-step-pill{flex:1;text-align:center;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);padding-top:.7rem;border-top:2px solid var(--line)}
+  .co-step-pill.active{color:var(--clay);border-color:var(--clay)}
+  .co-step-pill.done{color:var(--wine);border-color:var(--wine)}
+  .co-body{padding:1.6rem 2.2rem 2.2rem}
+  .co-body h2{font-size:1.7rem;margin-bottom:.35rem}
+  .co-sub{color:var(--muted);font-size:.9rem;margin-bottom:1.3rem}
+  .co-grid2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+  .co-grid2 .full{grid-column:1/-1}
+  .co-section{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--clay);margin:1.4rem 0 .7rem}
+  .ship-opt{display:flex;align-items:center;gap:.8rem;border:1px solid var(--line);border-radius:10px;padding:.85rem 1rem;cursor:pointer;transition:.2s;margin-bottom:.6rem}
+  .ship-opt:hover{border-color:var(--clay)}
+  .ship-opt input{accent-color:var(--clay)}
+  .ship-opt.sel{border-color:var(--clay);background:var(--blush)}
+  .ship-opt b{font-weight:500;font-size:.92rem}
+  .ship-opt small{display:block;color:var(--muted);font-size:.76rem}
+  .ship-opt .price{margin-left:auto;font-family:var(--serif);font-weight:600}
+  .pay-row{display:grid;grid-template-columns:2fr 1fr 1fr;gap:1rem}
+  .pay-row .promo-cell{grid-column:1/-1}
+  .co-review{display:grid;grid-template-columns:1.4fr 1fr;gap:1.6rem}
+  .co-items{display:flex;flex-direction:column;gap:.8rem}
+  .co-line{display:flex;gap:.8rem;align-items:center;font-size:.88rem}
+  .co-line img{width:52px;height:64px;object-fit:cover;border-radius:8px;flex:none}
+  .co-line .muted{color:var(--muted);font-size:.78rem}
+  .co-sum{background:var(--sand);border:1px solid var(--line);border-radius:12px;padding:1.2rem 1.3rem;height:fit-content}
+  .co-sum .total-row{font-size:1.2rem;margin-bottom:.8rem}
+  .co-sum .srow{display:flex;justify-content:space-between;font-size:.85rem;color:var(--muted);margin-bottom:.4rem}
+  .co-actions{display:flex;gap:.8rem;margin-top:1.6rem;flex-wrap:wrap}
+  .co-actions .btn{flex:1;min-width:150px}
+  .promo-msg{font-size:.78rem;margin-top:.5rem;min-height:1.1em}
+  .promo-msg.ok{color:var(--wine)}
+  .promo-msg.err{color:#c96a6a}
+  .co-done{text-align:center;padding:1rem 0}
+  .co-done .check{width:64px;height:64px;border-radius:50%;background:var(--clay);color:var(--cream);display:grid;place-items:center;margin:0 auto 1.2rem;font-size:1.6rem}
+  .co-done h2{font-size:2rem}
+  .co-done .order-no{font-family:var(--serif);font-size:1.3rem;color:var(--wine);margin:.8rem 0}
+  .co-done p{color:var(--muted);font-size:.9rem;max-width:46ch;margin:0 auto}
+  .field-err{border-color:#c96a6a!important}
+  .co-demo-note{font-size:.74rem;color:var(--muted);margin-top:1rem;text-align:center}
+  @media(max-width:560px){
+    .co-head,.co-body{padding-left:1.4rem;padding-right:1.4rem}
+    .co-grid2,.pay-row,.co-review{grid-template-columns:1fr}
+  }
+
 </style>
 </head>
 <body>
@@ -397,7 +466,7 @@
           <li><a href="index.html#shop">Size Guide</a></li>
           <li><a href="#">Shipping &amp; Returns</a></li>
           <li><a href="#">Track Order</a></li>
-          <li><a href="#">Contact Us</a></li>
+          <li><a href="#" data-contact>Contact Us</a></li>
         </ul>
       </div>
       <div class="foot-col">
@@ -416,6 +485,141 @@
     </div>
   </div>
 </footer>
+
+<button class="fab" data-contact aria-label="Contact the owners directly">
+  <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 7 8.5 6 8.5-6"/></svg>
+  Contact us
+</button>
+
+<div class="modal" id="contactModal">
+  <div class="modal-card contact-card">
+    <button class="modal-close" id="contactClose" aria-label="Close">&times;</button>
+    <div class="contact-body">
+      <span class="eyebrow">Contact the owners</span>
+      <h2>Talk to us directly</h2>
+      <p>Questions about an order, a dress or a collaboration? Send a note straight to the owners — we read every message and reply within one business day.</p>
+      <form class="cform" id="contactForm">
+        <div class="crow">
+          <label for="cName">Your name</label>
+          <input id="cName" name="name" type="text" placeholder="Jane Doe" required>
+        </div>
+        <div class="crow">
+          <label for="cEmail">Email</label>
+          <input id="cEmail" name="email" type="email" placeholder="jane@example.com" required>
+        </div>
+        <div class="crow">
+          <label for="cMsg">Message</label>
+          <textarea id="cMsg" name="message" placeholder="How can we help?" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-dark">Send message</button>
+        <span class="cnote">Goes straight to the owners — no bots, no call centre.</span>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="checkoutModal">
+  <div class="modal-card checkout-card">
+    <button class="modal-close" id="coClose" aria-label="Close">&times;</button>
+    <div class="co-head">
+      <span class="eyebrow">Checkout</span>
+      <div class="co-steps" id="coSteps">
+        <div class="co-step-pill active">1 &middot; Delivery</div>
+        <div class="co-step-pill">2 &middot; Payment</div>
+        <div class="co-step-pill">3 &middot; Review</div>
+      </div>
+    </div>
+    <div class="co-body">
+
+      <!-- step 1: contact + address + shipping method -->
+      <div id="coStep1">
+        <h2>Where should we send it?</h2>
+        <p class="co-sub">Enter your details — this demo never sends anything anywhere.</p>
+        <form class="cform" id="coForm1" novalidate>
+          <div class="co-grid2">
+            <div class="crow full"><label for="coEmail">Email</label><input id="coEmail" type="email" placeholder="jane@example.com"></div>
+            <div class="crow"><label for="coFirst">First name</label><input id="coFirst" type="text" placeholder="Jane"></div>
+            <div class="crow"><label for="coLast">Last name</label><input id="coLast" type="text" placeholder="Doe"></div>
+            <div class="crow full"><label for="coAddr">Address</label><input id="coAddr" type="text" placeholder="12 Gallery Lane"></div>
+            <div class="crow"><label for="coCity">City</label><input id="coCity" type="text" placeholder="London"></div>
+            <div class="crow"><label for="coPost">Postcode</label><input id="coPost" type="text" placeholder="SW1A 1AA"></div>
+            <div class="crow full"><label for="coPhone">Phone <span style="text-transform:none;letter-spacing:0">(optional)</span></label><input id="coPhone" type="tel" placeholder="+44 7700 900000"></div>
+          </div>
+          <div class="co-section">Delivery method</div>
+          <label class="ship-opt sel"><input type="radio" name="coShip" value="standard" checked><span><b>Standard</b><small>3–5 working days</small></span><span class="price" id="coStdPrice">Free</span></label>
+          <label class="ship-opt"><input type="radio" name="coShip" value="express"><span><b>Express</b><small>1–2 working days</small></span><span class="price">$15</span></label>
+          <label class="ship-opt"><input type="radio" name="coShip" value="nominated"><span><b>Nominated day</b><small>Pick a date at delivery</small></span><span class="price">$12</span></label>
+          <div class="co-actions">
+            <button type="button" class="btn btn-outline" id="coCancel1">Back to bag</button>
+            <button type="submit" class="btn btn-dark">Continue to payment</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- step 2: payment -->
+      <div id="coStep2" hidden>
+        <h2>Payment</h2>
+        <p class="co-sub">Demo checkout — use any numbers. No payment is taken and nothing is stored.</p>
+        <form class="cform" id="coForm2" novalidate>
+          <div class="crow"><label for="coCardName">Name on card</label><input id="coCardName" type="text" placeholder="JANE DOE"></div>
+          <div class="crow"><label for="coCardNo">Card number</label><input id="coCardNo" type="text" inputmode="numeric" placeholder="4242 4242 4242 4242" maxlength="19"></div>
+          <div class="pay-row">
+            <div class="crow"><label for="coExp">Expiry</label><input id="coExp" type="text" inputmode="numeric" placeholder="MM/YY" maxlength="5"></div>
+            <div class="crow"><label for="coCvc">CVC</label><input id="coCvc" type="text" inputmode="numeric" placeholder="123" maxlength="4"></div>
+            <div class="crow promo-cell"><label for="coPromo">Promo code</label><input id="coPromo" type="text" placeholder="Try FAB10" style="text-transform:uppercase"></div>
+          </div>
+          <div class="promo-msg" id="coPromoMsg"></div>
+          <div class="co-actions">
+            <button type="button" class="btn btn-outline" id="coBack2">Back</button>
+            <button type="submit" class="btn btn-dark">Review order</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- step 3: review -->
+      <div id="coStep3" hidden>
+        <h2>Review your order</h2>
+        <p class="co-sub">Almost there — check everything looks right.</p>
+        <div class="co-review">
+          <div>
+            <div class="co-section" style="margin-top:0">Items</div>
+            <div class="co-items" id="coItems"></div>
+            <div class="co-section">Deliver to</div>
+            <p class="co-sub" id="coAddrView" style="margin:0"></p>
+            <div class="co-section">Payment</div>
+            <p class="co-sub" id="coPayInfo" style="margin:0"></p>
+          </div>
+          <div class="co-sum">
+            <div class="total-row"><span>Total</span><span id="coTotal">$0</span></div>
+            <div class="srow"><span>Subtotal</span><span id="coSubtotal">$0</span></div>
+            <div class="srow" id="coDiscRow" hidden><span>Promo</span><span id="coDiscount">&minus;$0</span></div>
+            <div class="srow"><span>Shipping</span><span id="coShipping">Free</span></div>
+            <div class="co-actions" style="margin-top:1.2rem">
+              <button type="button" class="btn btn-outline" id="coBack3">Back</button>
+              <button type="button" class="btn btn-dark" id="coPlace">Place order</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- confirmation -->
+      <div id="coDone" hidden>
+        <div class="co-done">
+          <div class="check">&#10003;</div>
+          <span class="eyebrow">Order confirmed</span>
+          <h2>Thank you — you're all set</h2>
+          <div class="order-no" id="coOrderNo"></div>
+          <p id="coDoneMsg"></p>
+          <div class="co-actions" style="max-width:420px;margin:1.6rem auto 0">
+            <button type="button" class="btn btn-dark" id="coDoneBtn">Continue shopping</button>
+          </div>
+          <p class="co-demo-note">Demo checkout — no payment was taken and no data left your browser.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
 
 <div class="toast" id="toast"></div>
 <div class="overlay" id="mobOverlay"></div>
@@ -493,7 +697,157 @@ cartBody.addEventListener("click", e => {
   if (r){ cart = cart.filter(x => x.key !== r.dataset.remove); render(); toast("Removed from your bag"); }
 });
 
-$("#checkoutBtn").addEventListener("click", () => toast("Checkout is a demo \u2014 no payment is taken."));
+/* -------------------- checkout (demo, client-side only) -------------------- */
+const coModal = $("#checkoutModal");
+let coMethod = "standard", coPromoApplied = false;
+
+const coSubtotal = () => cart.reduce((s,i) => s + PRODUCTS.find(p => p.id === i.id).price * i.qty, 0);
+const coShipCost = () => {
+  if (coMethod === "express") return 15;
+  if (coMethod === "nominated") return 12;
+  return coSubtotal() >= 120 ? 0 : 8;   // free standard over $120, else $8
+};
+const coDiscount = () => coPromoApplied ? Math.round(coSubtotal() * 0.10) : 0;  // FAB10 = 10% off
+
+function coShowStep(n){
+  $("#coStep1").hidden = n !== 1;
+  $("#coStep2").hidden = n !== 2;
+  $("#coStep3").hidden = n !== 3;
+  $("#coDone").hidden = n !== 4;
+  $("#coSteps").style.display = n === 4 ? "none" : "";
+  $$("#coSteps .co-step-pill").forEach((el, i) => {
+    el.classList.toggle("active", i === n - 1);
+    el.classList.toggle("done", i < n - 1);
+  });
+}
+
+function coOpen(){
+  if (!cart.length){ toast("Your bag is empty"); return; }
+  coShowStep(1);
+  $("#coStdPrice").textContent = coShipCost() === 0 ? "Free" : money(coShipCost());
+  coModal.classList.add("open");
+}
+function coClose(){ coModal.classList.remove("open"); }
+
+$("#checkoutBtn").addEventListener("click", coOpen);
+$("#coClose").addEventListener("click", coClose);
+$("#coCancel1").addEventListener("click", coClose);
+coModal.addEventListener("click", e => { if (e.target === coModal) coClose(); });
+document.addEventListener("keydown", e => { if (e.key === "Escape" && coModal.classList.contains("open")) coClose(); });
+
+document.querySelectorAll(".ship-opt input").forEach(r =>
+  r.addEventListener("change", () => {
+    coMethod = r.value;
+    document.querySelectorAll(".ship-opt").forEach(o => o.classList.toggle("sel", o.querySelector("input").checked));
+    $("#coStdPrice").textContent = coShipCost() === 0 ? "Free" : money(coShipCost());
+  }));
+
+const coMarkErr = (input, bad) => input.classList.toggle("field-err", bad);
+
+$("#coForm1").addEventListener("submit", e => {
+  e.preventDefault();
+  const fields = [$("#coEmail"), $("#coFirst"), $("#coLast"), $("#coAddr"), $("#coCity"), $("#coPost")];
+  let ok = true;
+  fields.forEach(f => {
+    const bad = !f.value.trim() || (f.type === "email" && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.value.trim()));
+    coMarkErr(f, bad);
+    if (bad) ok = false;
+  });
+  if (!ok){ toast("Please complete the highlighted fields"); return; }
+  coShowStep(2);
+});
+
+/* card input niceties */
+$("#coCardNo").addEventListener("input", e => {
+  e.target.value = e.target.value.replace(/\D/g,"").slice(0,16).replace(/(.{4})/g,"$1 ").trim();
+});
+$("#coExp").addEventListener("input", e => {
+  const v = e.target.value.replace(/\D/g,"").slice(0,4);
+  e.target.value = v.length > 2 ? v.slice(0,2) + "/" + v.slice(2) : v;
+});
+$("#coCvc").addEventListener("input", e => {
+  e.target.value = e.target.value.replace(/\D/g,"").slice(0,4);
+});
+
+function coApplyPromo(){
+  const code = $("#coPromo").value.trim().toUpperCase();
+  const msg = $("#coPromoMsg");
+  if (!code){ coPromoApplied = false; msg.textContent = ""; msg.className = "promo-msg"; return true; }
+  if (code === "FAB10"){
+    coPromoApplied = true;
+    msg.textContent = "FAB10 applied — 10% off your order.";
+    msg.className = "promo-msg ok";
+    return true;
+  }
+  coPromoApplied = false;
+  msg.textContent = "That code isn't valid. Try FAB10.";
+  msg.className = "promo-msg err";
+  return false;
+}
+$("#coPromo").addEventListener("change", coApplyPromo);
+
+$("#coForm2").addEventListener("submit", e => {
+  e.preventDefault();
+  const name = $("#coCardName"), no = $("#coCardNo"), exp = $("#coExp"), cvc = $("#coCvc");
+  // normalise expiry (autofill / paste may omit the slash)
+  let expV = exp.value.replace(/\D/g,"").slice(0,4);
+  if (expV.length > 2) expV = expV.slice(0,2) + "/" + expV.slice(2);
+  exp.value = expV;
+  const digits = no.value.replace(/\D/g,"");
+  const checks = [
+    [name, !name.value.trim()],
+    [no, digits.length < 12],
+    [exp, !/^(0[1-9]|1[0-2])\/\d{2}$/.test(exp.value)],
+    [cvc, !/^\d{3,4}$/.test(cvc.value)]
+  ];
+  let ok = true;
+  checks.forEach(([f, bad]) => { coMarkErr(f, bad); if (bad) ok = false; });
+  if (!coApplyPromo()) ok = false;
+  if (!ok){ toast("Check your card details"); return; }
+  coRenderReview();
+  coShowStep(3);
+});
+
+function coRenderReview(){
+  $("#coItems").innerHTML = cart.map(i => {
+    const p = PRODUCTS.find(x => x.id === i.id);
+    return `<div class="co-line">
+      <img src="${p.img.replace('w=700','w=160')}" alt="${p.name}" />
+      <div><b>${p.name}</b><div class="muted">Size ${i.size} &middot; Qty ${i.qty}</div></div>
+      <div style="margin-left:auto;font-family:var(--serif);font-weight:600">${money(p.price * i.qty)}</div>
+    </div>`;
+  }).join("");
+  const g = id => $(id).value.trim();
+  $("#coAddrView").innerHTML = `${g("#coFirst")} ${g("#coLast")}<br>${g("#coAddr")}<br>${g("#coCity")}, ${g("#coPost")}` + (g("#coPhone") ? `<br>${g("#coPhone")}` : "");
+  $("#coPayInfo").textContent = "Card ending " + $("#coCardNo").value.replace(/\D/g,"").slice(-4) +
+    (coPromoApplied ? " · Promo FAB10" : "");
+  $("#coSubtotal").textContent = money(coSubtotal());
+  $("#coDiscRow").hidden = !coPromoApplied;
+  $("#coDiscount").textContent = "\u2212" + money(coDiscount());
+  $("#coShipping").textContent = coShipCost() === 0 ? "Free" : money(coShipCost());
+  $("#coTotal").textContent = money(coSubtotal() - coDiscount() + coShipCost());
+}
+
+$("#coBack2").addEventListener("click", () => coShowStep(1));
+$("#coBack3").addEventListener("click", () => coShowStep(2));
+
+$("#coPlace").addEventListener("click", () => {
+  const orderNo = "BF-" + Math.random().toString(36).slice(2,8).toUpperCase();
+  const total = coSubtotal() - coDiscount() + coShipCost();
+  const email = $("#coEmail").value.trim();
+  const orders = load("maison.orders") || [];
+  orders.push({ orderNo, date: new Date().toISOString(), items: cart.slice(), total, email, method: coMethod, promo: coPromoApplied ? "FAB10" : null });
+  save("maison.orders", orders);
+  cart = [];
+  save(CART_KEY, cart);
+  render();
+  $("#coOrderNo").textContent = "Order " + orderNo;
+  $("#coDoneMsg").innerHTML = `A confirmation would be sent to <b>${email}</b>. Your bag has been cleared — happy shopping.`;
+  coShowStep(4);
+  toast("Order placed — thank you!");
+});
+
+$("#coDoneBtn").addEventListener("click", () => { coClose(); location.href = "index.html#shop"; });
 
 $("#searchToggle").addEventListener("click", () => { $("#searchbar").classList.toggle("open"); if($("#searchbar").classList.contains("open")) $("#searchInput").focus(); });
 $("#searchInput").addEventListener("keydown", e => { if (e.key === "Enter"){ const q = e.target.value.trim(); if (q) location.href = "collection.html?q=" + encodeURIComponent(q); } });
@@ -502,6 +856,22 @@ $("#mobOverlay").addEventListener("click", () => { $("#navLinks").classList.remo
 $("#navLinks").addEventListener("click", e => { if (e.target.tagName === "A") { $("#navLinks").classList.remove("open"); $("#mobOverlay").classList.remove("open"); } });
 
 render();
+
+/* -------------------- contact the owners -------------------- */
+const contactModal = $("#contactModal");
+document.addEventListener("click", e => {
+  const trigger = e.target.closest("[data-contact]");
+  if (trigger){ e.preventDefault(); contactModal.classList.add("open"); }
+});
+$("#contactClose").addEventListener("click", () => contactModal.classList.remove("open"));
+contactModal.addEventListener("click", e => { if (e.target === contactModal) contactModal.classList.remove("open"); });
+document.addEventListener("keydown", e => { if (e.key === "Escape") contactModal.classList.remove("open"); });
+$("#contactForm").addEventListener("submit", e => {
+  e.preventDefault();
+  contactModal.classList.remove("open");
+  e.target.reset();
+  toast("Message sent — the owners will reply within one business day");
+});
 </script>
 </body>
 </html>

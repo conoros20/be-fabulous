@@ -187,7 +187,7 @@
   .total-row{display:flex;justify-content:space-between;font-family:var(--serif);font-size:1.4rem;font-weight:600;margin-bottom:1rem}
   .drawer-foot .btn{width:100%}
 
-  .modal{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:1.2rem}
+  .modal{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:1.2rem;background:rgba(8,6,5,.6);backdrop-filter:blur(3px)}
   .modal.open{display:flex}
   .modal-card{background:var(--cream);border-radius:16px;max-width:1000px;width:100%;max-height:92vh;overflow:auto;position:relative;box-shadow:var(--shadow)}
   .modal-close{position:absolute;top:1rem;right:1rem;z-index:5;width:40px;height:40px;border-radius:50%;background:rgba(255,253,250,.95);display:grid;place-items:center;font-size:1.5rem;color:var(--clay)}
@@ -225,6 +225,28 @@
 
   .toast{position:fixed;bottom:1.5rem;left:50%;transform:translate(-50%,140%);background:var(--charcoal);color:#fff;padding:.85rem 1.5rem;border-radius:999px;font-size:.82rem;letter-spacing:.04em;z-index:120;transition:transform .35s;box-shadow:var(--shadow)}
   .toast.show{transform:translate(-50%,0)}
+
+  /* contact the owners */
+  .fab{position:fixed;right:1.4rem;bottom:1.4rem;z-index:90;display:inline-flex;align-items:center;gap:.55rem;padding:.85rem 1.35rem;border-radius:999px;background:var(--clay);color:var(--cream);font-size:.76rem;letter-spacing:.13em;text-transform:uppercase;font-weight:500;box-shadow:var(--shadow);transition:.25s}
+  .fab:hover{background:var(--wine);transform:translateY(-2px)}
+  .fab svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.7}
+  .contact-card{max-width:560px;background:var(--sand);border:1px solid var(--line)}
+  .contact-body{padding:2.6rem 2.2rem 2.2rem}
+  .contact-body h2{font-size:1.9rem;margin:.4rem 0 .6rem}
+  .contact-body>p{color:var(--muted);font-size:.92rem}
+  .cform{display:flex;flex-direction:column;gap:1rem;margin-top:1.5rem}
+  .crow{display:flex;flex-direction:column;gap:.4rem}
+  .crow label{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--clay)}
+  .cform input,.cform textarea{width:100%;padding:.9rem 1.1rem;border:1px solid var(--line);border-radius:10px;background:var(--cream);color:var(--clay);font-family:inherit;font-size:.95rem;transition:.2s}
+  .cform input::placeholder,.cform textarea::placeholder{color:var(--muted)}
+  .cform input:focus,.cform textarea:focus{outline:none;border-color:var(--clay);background:var(--blush)}
+  .cform textarea{min-height:110px;resize:vertical}
+  .cform .btn{align-self:flex-start}
+  .cform .cnote{font-size:.78rem;color:var(--muted);margin-top:-.4rem}
+  @media(max-width:560px){
+    .fab{right:1rem;bottom:1rem;padding:.78rem 1.1rem;font-size:.72rem}
+    .toast{bottom:5.5rem}
+  }
 
   .reveal{opacity:0;transform:translateY(24px);transition:.7s cubic-bezier(.2,.7,.3,1)}
   .reveal.in{opacity:1;transform:none}
@@ -375,7 +397,7 @@
           <li><a href="index.html#shop">Size Guide</a></li>
           <li><a href="#">Shipping &amp; Returns</a></li>
           <li><a href="#">Track Order</a></li>
-          <li><a href="#">Contact Us</a></li>
+          <li><a href="#" data-contact>Contact Us</a></li>
         </ul>
       </div>
       <div class="foot-col">
@@ -395,6 +417,38 @@
   </div>
 </footer>
 
+<button class="fab" data-contact aria-label="Contact the owners directly">
+  <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 7 8.5 6 8.5-6"/></svg>
+  Contact us
+</button>
+
+<div class="modal" id="contactModal">
+  <div class="modal-card contact-card">
+    <button class="modal-close" id="contactClose" aria-label="Close">&times;</button>
+    <div class="contact-body">
+      <span class="eyebrow">Contact the owners</span>
+      <h2>Talk to us directly</h2>
+      <p>Questions about an order, a dress or a collaboration? Send a note straight to the owners — we read every message and reply within one business day.</p>
+      <form class="cform" id="contactForm">
+        <div class="crow">
+          <label for="cName">Your name</label>
+          <input id="cName" name="name" type="text" placeholder="Jane Doe" required>
+        </div>
+        <div class="crow">
+          <label for="cEmail">Email</label>
+          <input id="cEmail" name="email" type="email" placeholder="jane@example.com" required>
+        </div>
+        <div class="crow">
+          <label for="cMsg">Message</label>
+          <textarea id="cMsg" name="message" placeholder="How can we help?" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-dark">Send message</button>
+        <span class="cnote">Goes straight to the owners — no bots, no call centre.</span>
+      </form>
+    </div>
+  </div>
+</div>
+
 <div class="toast" id="toast"></div>
 <div class="overlay" id="mobOverlay"></div>
 
@@ -411,20 +465,29 @@ try {
   $("#cartCount").textContent = c.reduce((s, i) => s + i.qty, 0);
 } catch(e){}
 
+let toastTimer;
+function toast(msg){
+  const t = $("#toast");
+  t.textContent = msg;
+  t.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove("show"), 2200);
+}
+
 const QUESTIONS = [
   { key:"occasion", q:"What&rsquo;s the occasion?", options:[
     { label:"Everyday",           desc:"Easy, wear-anywhere pieces",   cats:["summer","floral"] },
-    { label:"Work &amp; Day",     desc:"Polished and comfortable",     cats:["midi","slip","bodycon"] },
+    { label:"Work &amp; Day",     desc:"Polished and comfortable",     cats:["maxi","slip","bodycon","workwear"] },
     { label:"Cocktail &amp; Party", desc:"After-dark silhouettes",     cats:["cocktail"] },
     { label:"Evening &amp; Formal", desc:"Floor-length drama",         cats:["evening"] },
     { label:"Wedding",            desc:"The dress for the aisle",      cats:["bridal"] },
-    { label:"Wedding Guest",      desc:"Celebrate in style",           cats:["bridesmaid"] }
+    { label:"Wedding Guest",      desc:"Celebrate in style",           cats:["bridesmaid","guest"] }
   ]},
   { key:"silhouette", q:"Which silhouette do you love?", options:[
     { label:"Slip &amp; Satin",       desc:"Bias-cut and fluid",         cats:["slip"] },
-    { label:"Flowing Maxi / Midi",    desc:"Skimming and romantic",      cats:["maxi","midi"] },
+    { label:"Flowing Maxi / Midi",    desc:"Skimming and romantic",      cats:["maxi"] },
     { label:"Fitted &amp; Sculpted",  desc:"Second-skin knits",          cats:["bodycon"] },
-    { label:"Structured &amp; Tailored", desc:"Sharp, defined lines",    cats:["cocktail","evening"] }
+    { label:"Structured &amp; Tailored", desc:"Sharp, defined lines",    cats:["cocktail","evening","workwear"] }
   ]},
   { key:"colour", q:"Pick a colour mood", options:[
     { label:"Soft neutrals",     desc:"Espresso, sand, sage", colors:["#241c13","#3a3128","#6b5f4a","#8a9a7b","#a9b4c2"] },
@@ -530,6 +593,22 @@ function observeReveals(){
 }
 
 showQuestion();
+
+/* -------------------- contact the owners -------------------- */
+const contactModal = $("#contactModal");
+document.addEventListener("click", e => {
+  const trigger = e.target.closest("[data-contact]");
+  if (trigger){ e.preventDefault(); contactModal.classList.add("open"); }
+});
+$("#contactClose").addEventListener("click", () => contactModal.classList.remove("open"));
+contactModal.addEventListener("click", e => { if (e.target === contactModal) contactModal.classList.remove("open"); });
+document.addEventListener("keydown", e => { if (e.key === "Escape") contactModal.classList.remove("open"); });
+$("#contactForm").addEventListener("submit", e => {
+  e.preventDefault();
+  contactModal.classList.remove("open");
+  e.target.reset();
+  toast("Message sent — the owners will reply within one business day");
+});
 </script>
 </body>
 </html>

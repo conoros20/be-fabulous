@@ -19,6 +19,7 @@ Project: Be Fabulous — static HTML/CSS/JS storefront
 - Header account button (index.html + style-finder.html) links to account.html
 - Cart is persisted client-side in `localStorage["maison.cart"]` as `[{ key, id, size, qty }]`; the header cart icon on every page links to `cart.html`
 - Product detail links use `product.html?id=<id>` (one photo per dress; colour switch = CSS tint overlay)
+- Contact the owners: floating `.fab` button + footer `[data-contact]` link open `#contactModal` on every page (name/email/message form → demo toast, no backend); its CSS/JS is duplicated across all 6 pages — keep in sync
 
 ## Workflow (live preview)
 - Serve: `python3 -m http.server 8000` from `/home/da/Work/dress-shop`
