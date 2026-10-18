@@ -34,6 +34,7 @@
   .btn-outline:hover{background:var(--clay);color:var(--cream)}
 
   .announce{background:var(--charcoal);color:var(--clay);text-align:center;font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;padding:.6rem calc(1rem + env(safe-area-inset-left)) .6rem calc(1rem + env(safe-area-inset-right));padding-top:calc(.6rem + env(safe-area-inset-top));margin-top:calc(-1 * env(safe-area-inset-top));position:relative;z-index:100}
+  body::before{content:'';position:fixed;top:0;left:0;right:0;height:env(safe-area-inset-top);background:var(--charcoal);z-index:99}
 
   header{position:sticky;top:0;z-index:60;background:rgba(0,0,0,.66);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
   .nav{display:flex;align-items:center;justify-content:space-between;height:74px;gap:1rem}
