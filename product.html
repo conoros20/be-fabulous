@@ -2,6 +2,15 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
+
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Be Fabulous — Dresses made to be remembered" />
+<meta property="og:description" content="62 handcrafted dresses across slip, maxi, cocktail, evening, bridal and more. Ethically made, sizes XS–3XL." />
+<meta property="og:image" content="https://images.pexels.com/photos/36973652/pexels-photo-36973652.jpeg?auto=compress&cs=tinysrgb&w=1200" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Be Fabulous — Dresses made to be remembered" />
+<meta name="twitter:description" content="62 handcrafted dresses, ethically made, sizes XS–3XL." />
+<meta name="twitter:image" content="https://images.pexels.com/photos/36973652/pexels-photo-36973652.jpeg?auto=compress&cs=tinysrgb&w=1200" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 <title>Dress — Be Fabulous</title>
 <link rel="icon" href="favicon.svg" type="image/svg+xml" />
@@ -370,6 +379,8 @@
           <li><a href="#">Shipping &amp; Returns</a></li>
           <li><a href="#">Track Order</a></li>
           <li><a href="#" data-contact>Contact Us</a></li>
+          <li><a href="tel:+353830933430">083 093 3430</a></li>
+          <li><a href="mailto:conorseanosullivan@gmail.com">conorseanosullivan@gmail.com</a></li>
         </ul>
       </div>
       <div class="foot-col">
@@ -401,6 +412,10 @@
       <span class="eyebrow">Contact the owners</span>
       <h2>Talk to us directly</h2>
       <p>Questions about an order, a dress or a collaboration? Send a note straight to the owners — we read every message and reply within one business day.</p>
+      <div style="display:flex;gap:1rem;flex-wrap:wrap;margin:1.2rem 0 1rem">
+        <a href="tel:+353830933430" style="display:inline-flex;align-items:center;gap:.5rem;padding:.6rem 1.1rem;border:1px solid var(--line);border-radius:999px;font-size:.85rem;color:var(--clay)">Call 083 093 3430</a>
+        <a href="mailto:conorseanosullivan@gmail.com" style="display:inline-flex;align-items:center;gap:.5rem;padding:.6rem 1.1rem;border:1px solid var(--line);border-radius:999px;font-size:.85rem;color:var(--clay)">Email us</a>
+      </div>
       <form class="cform" id="contactForm">
         <div class="crow">
           <label for="cName">Your name</label>
@@ -547,9 +562,13 @@ contactModal.addEventListener("click", e => { if (e.target === contactModal) con
 document.addEventListener("keydown", e => { if (e.key === "Escape") contactModal.classList.remove("open"); });
 $("#contactForm").addEventListener("submit", e => {
   e.preventDefault();
+  const n = $("#cName").value, em = $("#cEmail").value, m = $("#cMsg").value;
+  const subject = encodeURIComponent(`Website enquiry from ${n}`);
+  const body = encodeURIComponent(`Name: ${n}\nEmail: ${em}\n\n${m}`);
+  window.location.href = `mailto:conorseanosullivan@gmail.com?subject=${subject}&body=${body}`;
   contactModal.classList.remove("open");
   e.target.reset();
-  toast("Message sent — the owners will reply within one business day");
+  toast("Opening your email app — press send and we'll reply within one business day");
 });
 </script>
 </body>

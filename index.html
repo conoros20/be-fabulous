@@ -2,10 +2,19 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
+
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Be Fabulous — Dresses made to be remembered" />
+<meta property="og:description" content="62 handcrafted dresses across slip, maxi, cocktail, evening, bridal and more. Ethically made, sizes XS–3XL." />
+<meta property="og:image" content="https://images.pexels.com/photos/36973652/pexels-photo-36973652.jpeg?auto=compress&cs=tinysrgb&w=1200" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Be Fabulous — Dresses made to be remembered" />
+<meta name="twitter:description" content="62 handcrafted dresses, ethically made, sizes XS–3XL." />
+<meta name="twitter:image" content="https://images.pexels.com/photos/36973652/pexels-photo-36973652.jpeg?auto=compress&cs=tinysrgb&w=1200" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 <title>Be Fabulous — Timeless Dresses for Every Occasion</title>
 <link rel="icon" href="favicon.svg" type="image/svg+xml" />
-<meta name="description" content="Shop 37 handcrafted dresses across slip, maxi, cocktail, evening, bridal and more. Ethically made, sizes XS–3XL." />
+<meta name="description" content="Shop 62 handcrafted dresses across slip, maxi, cocktail, evening, bridal and more. Ethically made, sizes XS–3XL." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -303,7 +312,7 @@
     <div class="hero-copy">
       <span class="eyebrow">The 2026 Collection</span>
       <h1>Dresses made to be <em>remembered</em></h1>
-      <p>Timeless silhouettes, responsibly sourced fabrics, and a fit that feels made for you. 37 new-season styles, sizes XS–3XL.</p>
+      <p>Timeless silhouettes, responsibly sourced fabrics, and a fit that feels made for you. 62 new-season styles, sizes XS–3XL.</p>
       <div class="hero-cta">
         <a href="#shop" class="btn btn-dark">Shop the collection</a>
         <a href="style-finder.html" class="btn btn-outline">Browse My Style</a>
@@ -360,7 +369,7 @@
       <div class="stats">
         <div><strong>15yr</strong><span>Of craftsmanship</span></div>
         <div><strong>100%</strong><span>Traceable fabric</span></div>
-        <div><strong>37</strong><span>Styles this season</span></div>
+        <div><strong>62</strong><span>Styles this season</span></div>
       </div>
     </div>
   </div>
@@ -428,6 +437,8 @@
           <li><a href="#">Shipping &amp; Returns</a></li>
           <li><a href="#">Track Order</a></li>
           <li><a href="#" data-contact>Contact Us</a></li>
+          <li><a href="tel:+353830933430">083 093 3430</a></li>
+          <li><a href="mailto:conorseanosullivan@gmail.com">conorseanosullivan@gmail.com</a></li>
         </ul>
       </div>
       <div class="foot-col">
@@ -442,7 +453,7 @@
     </div>
     <div class="foot-bottom">
       <span>&copy; <span id="year"></span> Be Fabulous. All rights reserved. &nbsp;·&nbsp; Photography via Pexels (free license).</span>
-      <span class="pay">Visa · Mastercard · Amex · PayPal · Apple&nbsp;Pay</span>
+      <span class="pay">Demo concept site · Designed &amp; built by <a href="mailto:conorseanosullivan@gmail.com" style="text-decoration:underline">Conor O'Sullivan</a></span>
     </div>
   </div>
 </footer>
@@ -479,6 +490,10 @@
       <span class="eyebrow">Contact the owners</span>
       <h2>Talk to us directly</h2>
       <p>Questions about an order, a dress or a collaboration? Send a note straight to the owners — we read every message and reply within one business day.</p>
+      <div style="display:flex;gap:1rem;flex-wrap:wrap;margin:1.2rem 0 1rem">
+        <a href="tel:+353830933430" style="display:inline-flex;align-items:center;gap:.5rem;padding:.6rem 1.1rem;border:1px solid var(--line);border-radius:999px;font-size:.85rem;color:var(--clay)">Call 083 093 3430</a>
+        <a href="mailto:conorseanosullivan@gmail.com" style="display:inline-flex;align-items:center;gap:.5rem;padding:.6rem 1.1rem;border:1px solid var(--line);border-radius:999px;font-size:.85rem;color:var(--clay)">Email us</a>
+      </div>
       <form class="cform" id="contactForm">
         <div class="crow">
           <label for="cName">Your name</label>
@@ -770,9 +785,13 @@ contactModal.addEventListener("click", e => { if (e.target === contactModal) con
 document.addEventListener("keydown", e => { if (e.key === "Escape") contactModal.classList.remove("open"); });
 $("#contactForm").addEventListener("submit", e => {
   e.preventDefault();
+  const n = $("#cName").value, em = $("#cEmail").value, m = $("#cMsg").value;
+  const subject = encodeURIComponent(`Website enquiry from ${n}`);
+  const body = encodeURIComponent(`Name: ${n}\nEmail: ${em}\n\n${m}`);
+  window.location.href = `mailto:conorseanosullivan@gmail.com?subject=${subject}&body=${body}`;
   contactModal.classList.remove("open");
   e.target.reset();
-  toast("Message sent — the owners will reply within one business day");
+  toast("Opening your email app — press send and we'll reply within one business day");
 });
 </script>
 </body>
